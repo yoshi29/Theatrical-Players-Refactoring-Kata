@@ -34,5 +34,16 @@ namespace TheatricalPlayersRefactoringKata
                 _bonusPerAudience = 500;
             }
         }
+
+        public int CalculateAmount(int audienceCount)
+        {
+            var totalAmount = _baseAmount + _basePerAudience * audienceCount;
+            if (audienceCount > _audienceThreshold)
+            {
+                totalAmount += _bonusBase + _bonusPerAudience * (audienceCount - _audienceThreshold);
+            }
+
+            return totalAmount;
+        }
     }
 }
